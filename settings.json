@@ -1,0 +1,24 @@
+{
+	"UserKeys": [],
+
+	"DefaultKeys": ["Switch Frequency",
+	"FRS Unlock",
+	"Chirp Radar Detected",
+	"Pulse Radar Detected",
+	"Panic",
+	"Exception",
+	"Video Disconnected",
+	"Network Disconnected",
+	"High PE",
+	"CCURX @ frame#",
+	"WARN Bad Channel Freq",
+	"Range message: 65535",
+	"out of range:1",
+	"force:1",
+	"ACG unlock",
+	"VIDEO_INPUT_DISCONNECTED",
+	"VCG Unlock",
+	"WIFI detected",
+	"video real"]
+
+}
