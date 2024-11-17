@@ -23,41 +23,68 @@ The script uses built-in Python modules except for:
 Install the required modules with:
 ```bash
 pip install pandas xlsxwriter
+```
+
+---
 
 ## Help
 
-------------------------------------------Help-------------------------------------------------------------
-This program is used to analyze logs and export results to Excel
-Time Plot - will plot in an excel file a graph of the distance for all devices
-Histogram - will plot in an excel file a graph of the histograms of strings located in settings.json file
-Be aware - string search inside the log file is not case sensitive
+### Overview
+This program is used to analyze logs and export results to Excel.
 
-------------------------------------------Modules----------------------------------------------------------
-All modules that the program is using are built in except Pandas and Xlsxwriter.
-The user must Install those modules before using the program.
+- **Time Plot**: Plots in an Excel file a graph of the distance for all devices.
+- **Histogram**: Plots in an Excel file histograms of strings located in `settings.json`.
+- **Case Sensitivity**: String search inside the log file is not case sensitive.
 
-------------------------------------------Script Parameters------------------------------------------------
+---
+
+### Script Parameters
+
+Run the script using the following syntax:
+```bash
 python LogAnalyzer.py <export_option> <video_real> <Input> <Output>
-<export_option> is mandatory! it can be 0,1,2: 0=histogram only, 1=TimePlot only, 2=Both
-<video_real> is mandatory! it can be 0 or 1: 0=analyze all log, 1=analyze only after video real
-<Input> is mandatory! it can be a folder containing files or a txt/log file we want to analyze
-<Output> is optional! and it's the path user wants to save excel files at
-If output is empty - then files are saved in default mode:
-     If <Input> is a file then excel file is exported at the same location of this file 
-     If <Input> is a folder then ExcelResults sub folder is created and excel files are saved inside
+```
 
-------------------------------------------Script rules-----------------------------------------------------
-(1) setting.json file - MUST be at the same location of LogAnalyzer.py script file
-(2) <Input> and <Output> must be without spaces -  for example:
-    c:\MyFiles  ----> Is a valid parameter name
-    c:\My Files ----> Is not a valid parameter name
-In addition to handle this issue you need to add quotation marks to your path:
-    "c:\My Files" ----> Now, is a valid parameter name
+- `<export_option>` (Mandatory):
+  - `0`: Histogram only.
+  - `1`: Time plot only.
+  - `2`: Both histogram and time plot.
+- `<video_real>` (Mandatory):
+  - `0`: Analyze the entire log file.
+  - `1`: Analyze only after "video real" appears in the log.
+- `<Input>` (Mandatory): Path to a folder containing files or a specific `.txt`/`.log` file to analyze.
+- `<Output>` (Optional): Path to save the Excel files.
+  - **Default Output Locations**:
+    - If `<Input>` is a file: Excel file is saved in the same location as the input file.
+    - If `<Input>` is a folder: An `ExcelResults` subfolder is created, and files are saved there.
 
-------------------------------------------Examples---------------------------------------------------------
-(1) python LogAnalyzer.py 2 0 c:\yoni c:\MyExcelResults
-    both TimePlot and Histogram results of files inside c:\yoni are saved in c:\MyExcelResults
-(2) python LogAnalyzer.py 0 1 c:\yoni
-    Histogram results of files inside c:\yoni are saved in c:\yoni\ExcelResults default folder
-    1 - means log is analyzed only after video real appearance
+---
 
+### Script Rules
+
+1. The `settings.json` file **must** be in the same directory as the `LogAnalyzer.py` script.
+2. Paths for `<Input>` and `<Output>` must not contain spaces. For example:
+   - `c:\MyFiles` is valid.
+   - `c:\My Files` is not valid.
+3. To handle spaces, enclose the path in quotation marks:
+   - `"c:\My Files"` is valid.
+
+---
+
+### Examples
+
+1. Save both time plot and histogram results of files inside `c:\yoni` to `c:\MyExcelResults`:
+   ```bash
+   python LogAnalyzer.py 2 0 c:\yoni c:\MyExcelResults
+   ```
+2. Save histogram results of files inside `c:\yoni` to the default folder (`c:\yoni\ExcelResults`), analyzing only after "video real":
+   ```bash
+   python LogAnalyzer.py 0 1 c:\yoni
+   ```
+
+---
+
+## Notes
+
+- Ensure `settings.json` is properly configured to match the log analysis requirements.
+- Outputs are generated in `.xlsx` format and require a compatible Excel viewer.
